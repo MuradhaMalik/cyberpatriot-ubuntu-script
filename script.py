@@ -90,8 +90,8 @@ subprocess.call(["sudo", "adduser", "parktudor"])
 proc = subprocess.Popen(["sudo", "passwd", user], 
             stdin=subprocess.PIPE, 
             stdout=subprocess.PIPE)
-proc.stdin.write("GreatYear2019!@\n".encode("ascii"))
-proc.stdin.write("GreatYear2019!@\n".encode("ascii"))
+proc.stdin.write("@Mongus1776!:))\n".encode("ascii"))
+proc.stdin.write("@Mongus1776!:))\n".encode("ascii"))
 proc.stdin.flush()
 subprocess.call(["sudo", "usermod", "-aG", "sudo", "parktudor"])
 
@@ -136,8 +136,8 @@ if input("Change all allowed users passwords? (y/n) ") == "y":
         proc = subprocess.Popen(["sudo", "passwd", user], 
             stdin=subprocess.PIPE, 
             stdout=subprocess.PIPE)
-        proc.stdin.write("Cyberpatriot1!\n".encode("ascii"))
-        proc.stdin.write("Cyberpatriot1!\n".encode("ascii"))
+        proc.stdin.write("@Mongus1776!:))\n".encode("ascii"))
+        proc.stdin.write("@Mongus1776!:))\n".encode("ascii"))
         proc.stdin.flush()
         print("Changed password of user {}".format(user))
         time.sleep(1)
@@ -170,6 +170,8 @@ print("---------")
 # Enable firewall
 if input("Enable firewall? (y/n) ") == "y":
     subprocess.call(["sudo", "ufw", "enable"])
+    subprocess.call(["sudo", "ufw", "default", "deny", "incoming"])
+    subprocess.call(["sudo", "ufw", "default", "deny", "incoming"])
     subprocess.call(["sudo", "ufw", "deny", "23"])
     subprocess.call(["sudo", "ufw", "deny", "2049"])
     subprocess.call(["sudo", "ufw", "deny", "515"])
@@ -187,8 +189,8 @@ if input("Change root password? (y/n) ") == "y":
     proc = subprocess.Popen(["sudo", "passwd"], 
         stdin=subprocess.PIPE, 
         stdout=subprocess.PIPE)
-    proc.stdin.write("Cyberpatriot1!\n".encode("ascii"))
-    proc.stdin.write("Cyberpatriot1!\n".encode("ascii"))
+    proc.stdin.write("@Mongus1776!:))\n".encode("ascii"))
+    proc.stdin.write("@Mongus1776!:))\n".encode("ascii"))
     proc.stdin.flush()
     time.sleep(1)
 print("---------")
@@ -240,11 +242,11 @@ if input("Enable password policy? (y/n) ") == "y":
         for line in conf.read().splitlines():
             if "#" not in line:
                 if "PASS_MAX_DAYS" in line:
-                    lines.append("PASS_MAX_DAYS   30")
+                    lines.append("PASS_MAX_DAYS   90")
                 elif "PASS_MIN_DAYS" in line:
-                    lines.append("PASS_MIN_DAYS   10")
+                    lines.append("PASS_MIN_DAYS   7")
                 elif "PASS_WARN_AGE" in line:
-                    lines.append("PASS_WARN_AGE   7")
+                    lines.append("PASS_WARN_AGE   14")
                 else:
                     lines.append(line)
             elif "Script" in line:

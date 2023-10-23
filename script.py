@@ -32,6 +32,8 @@ if os.geteuid() != 0:
     print("Please run the script as root.")
     exit()
 
+input("Did you update allowed_admins.txt, allowed_packages.txt, and allowed_users.txt?")
+print("---------")
 input("Are the forensics questions solved?")
 print("---------")
 input("Are Firefox settings correctly set?")
@@ -40,6 +42,7 @@ input("Please fill out information in the allowed directory.")
 print("---------")
 input("Check /etc/sudoers")
 print("---------")
+time.sleep(3);
 
 # Get /etc/passwd info
 passwd = get_file("/etc/passwd")

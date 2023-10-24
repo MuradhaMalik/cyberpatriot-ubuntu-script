@@ -394,13 +394,3 @@ print("Removing Admin!")
 for admin in current_admins:
     if admin not in allowed_admins:
         subprocess.call(["sudo", "deluser", admin, "sudo"])
-
-
-
-
-# **experimental 
-# Define the command to schedule daily updates in the crontab
-update_command = '0 0 * * * sudo apt update && sudo apt upgrade -y'
-
-# Add the command to the user's crontab
-subprocess.call(f'(crontab -l; echo "{update_command}") | crontab -', shell=True)

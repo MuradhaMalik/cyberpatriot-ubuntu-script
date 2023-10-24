@@ -24,10 +24,11 @@ def get_output(command, outfile=None):
      executable="/bin/bash")
     return command_out.stdout.read().decode().splitlines()
 
-
+""""
 if "CyberPatriot" not in os.getcwd():
     print("Please run the script from the CyberPatriot directory.")
     exit()
+""""
 if os.geteuid() != 0:
     print("Please run the script as root.")
     exit()

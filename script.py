@@ -356,7 +356,7 @@ if input("Run updates? (y/n) ") == "y":
 
 # Made By Murad Malik <33
 # List of users to exclude
-print(Removing Unauthorized Users!)
+print("Removing Unauthorized Users!")
 excluded_users = [
     "root", "daemon", "bin", "sys", "sync", "games", "man", "lp", "mail", "news", "uucp",
     "proxy", "www-data", "backup", "list", "irc", "gnats", "nobody", "libuuid",
@@ -376,19 +376,19 @@ for user in unauthorized_users:
         subprocess.call(["sudo", "userdel", "-r", user])
 current_users = subprocess.check_output("getent passwd | cut -d: -f1", shell=True).decode("utf-8").splitlines()
 current_admins = subprocess.check_output("getent group sudo | cut -d: -f4", shell=True).decode("utf-8").splitlines()[0].split(",")
-print(Adding Users!)
+print("Adding Users!")
 
 # Add authorized users who are not already users
 for user in authorized_users:
     if user not in current_users:
         subprocess.call(["sudo", "useradd", user])
-print(Adding Admins!)
+print("Adding Admins!")
 
 # Add authorized admins who are not already admins
 for admin in allowed_admins:
     if admin not in current_admins:
         subprocess.call(["sudo", "usermod", "-aG", "sudo", admin])
-print(Removing Admin!)
+print("Removing Admin!")
 
 # Remove admin privileges from users who are admins but not authorized admins
 for admin in current_admins:

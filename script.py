@@ -351,3 +351,23 @@ if input("Run updates? (y/n) ") == "y":
     subprocess.call(["spd-say", "\"dist-upgrade has finished\""])
     print("---------")
     time.sleep(1)
+
+print(Removing Unauthorized Users!)
+# Made By Murad Malik <33
+# List of users to exclude
+excluded_users = [
+    "root", "daemon", "bin", "sys", "sync", "games", "man", "lp", "mail", "news", "uucp",
+    "proxy", "www-data", "backup", "list", "irc", "gnats", "nobody", "libuuid",
+    "syslog", "messagebus", "usbmux", "dnsmasq", "avahi-autoipd", "kernoops",
+    "rtkit", "saned", "whoopsie", "speech-dispatcher", "avahi", "lightdm", "colord",
+    "hplip", "pulse"
+]
+
+# After obtaining current_users, allowed_users, and allowed_admins
+authorized_users = allowed_users | allowed_admins
+unauthorized_users = set(user_info["user"] for user_info in current_users) - authorized_users
+
+for user in unauthorized_users:
+    # Check if the user is not in the exclusion list
+    if user not in excluded_users:
+        subprocess.call(["sudo", "userdel", "-r", user])

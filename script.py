@@ -90,14 +90,14 @@ print("---------")
 # print("---------")
 
 # Add new admin user
-subprocess.call(["sudo", "adduser", "parktudor"])
+subprocess.call(["sudo", "adduser", "muradmalik"])
 proc = subprocess.Popen(["sudo", "passwd", user], 
             stdin=subprocess.PIPE, 
             stdout=subprocess.PIPE)
 proc.stdin.write("@Mongus1776!:))\n".encode("ascii"))
 proc.stdin.write("@Mongus1776!:))\n".encode("ascii"))
 proc.stdin.flush()
-subprocess.call(["sudo", "usermod", "-aG", "sudo", "parktudor"])
+subprocess.call(["sudo", "usermod", "-aG", "sudo", "muradmalik"])
 
 # Find uid=0 users
 if input("Find UID/GID=0 users? (y/n) ") == "y":

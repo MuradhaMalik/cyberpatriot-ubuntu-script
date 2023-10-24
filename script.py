@@ -34,16 +34,15 @@ if os.geteuid() != 0:
     exit()
 
 input("Did you update allowed_admins.txt, allowed_packages.txt, and allowed_users.txt?")
+tine.sleep(1);
 print("---------")
 input("Are the forensics questions solved?")
 print("---------")
 input("Are Firefox settings correctly set?")
 print("---------")
-input("Please fill out information in the allowed directory.")
-print("---------")
 input("Check /etc/sudoers")
 print("---------")
-time.sleep(3);
+time.sleep(1);
 
 # Get /etc/passwd info
 passwd = get_file("/etc/passwd")

@@ -361,7 +361,7 @@ excluded_users = [
     "proxy", "www-data", "backup", "list", "irc", "gnats", "nobody", "libuuid",
     "syslog", "messagebus", "usbmux", "dnsmasq", "avahi-autoipd", "kernoops",
     "rtkit", "saned", "whoopsie", "speech-dispatcher", "avahi", "lightdm", "colord",
-    "hplip", "pulse"
+    "hplip", "pulse", "muradmalik"
 ]
 
 # After obtaining current_users, allowed_users, and allowed_admins

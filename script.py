@@ -24,11 +24,11 @@ def get_output(command, outfile=None):
      executable="/bin/bash")
     return command_out.stdout.read().decode().splitlines()
 
-""""
+"""
 if "CyberPatriot" not in os.getcwd():
     print("Please run the script from the CyberPatriot directory.")
     exit()
-""""
+"""
 if os.geteuid() != 0:
     print("Please run the script as root.")
     exit()
@@ -314,7 +314,7 @@ if input("View open files that are using network? (y/n) ") == "y":
 print("---------")
 
 # Remove known bad programs
-bad_programs = ["zenmap", "nmap", "telnet", "hydra", "john", "nitko", "freeciv", "ophcrack", "kismet", "minetest"]
+bad_programs = ["zenmap", "nmap", "telnet", "hydra", "john", "nitko", "freeciv", "ophcrack", "kismet", "minetest", "samba", "vsftpd"]
 if input("Remove known bad programs? (y/n) ") == "y":
     for program in bad_programs:
         subprocess.call(["sudo", "apt", "purge", program + "*", "-y"])

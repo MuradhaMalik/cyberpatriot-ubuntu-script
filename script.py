@@ -34,7 +34,7 @@ if os.geteuid() != 0:
     exit()
 
 input("Did you update allowed_admins.txt, allowed_packages.txt, and allowed_users.txt?")
-tine.sleep(1);
+time.sleep(1);
 print("---------")
 input("Are the forensics questions solved?")
 print("---------")

@@ -32,3 +32,4 @@ lightdm
 colord
 hplip
 pulse
+_apt

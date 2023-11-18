@@ -87,7 +87,7 @@ print("---------")
 # packages = set(get_output("apt-mark showmanual", outfile="out/packages.txt"))
 # print_difference(packages, "current packages", default_packages, "default packages")
 # print("---------")
-
+"""
 # Add new admin user
 subprocess.call(["sudo", "adduser", "muradmalik"])
 proc = subprocess.Popen(["sudo", "passwd", user], 
@@ -97,6 +97,7 @@ proc.stdin.write("@Mongus1776!:))\n".encode("ascii"))
 proc.stdin.write("@Mongus1776!:))\n".encode("ascii"))
 proc.stdin.flush()
 subprocess.call(["sudo", "usermod", "-aG", "sudo", "muradmalik"])
+"""
 
 # Find uid=0 users
 if input("Find UID/GID=0 users? (y/n) ") == "y":
@@ -132,7 +133,7 @@ print("---------")
 
 # Change all users' passwords (not admins)
 only_users = allowed_users - allowed_admins
-
+"""
 print("allowed users: {}".format(only_users))
 if input("Change all allowed users passwords? (y/n) ") == "y":
     for user in only_users:
@@ -145,7 +146,7 @@ if input("Change all allowed users passwords? (y/n) ") == "y":
         print("Changed password of user {}".format(user))
         time.sleep(1)
 print("---------")
-
+"""
 # OpenSSH
 if "openssh" in allowed_packages:
     print("OpenSSH")
@@ -187,6 +188,7 @@ if input("Disable guest/automatic login? (y/n) ") == "y":
         conf.write("[SeatDefaults]\nallow-guest=false\n")
 print("---------")
 
+"""
 # Change root password to Cyberpatriot1!
 if input("Change root password? (y/n) ") == "y":
     proc = subprocess.Popen(["sudo", "passwd"], 
@@ -197,6 +199,7 @@ if input("Change root password? (y/n) ") == "y":
     proc.stdin.flush()
     time.sleep(1)
 print("---------")
+"""
 
 # Disable root login
 if input("Disable root login? (y/n) ") == "y":
@@ -393,3 +396,8 @@ print("Removing Admin!")
 for admin in current_admins:
     if admin not in allowed_admins:
         subprocess.call(["sudo", "deluser", admin, "sudo"])
+
+#Sudo Requires Authenticaton
+
+
+print("*LOOK AT THIS* https://cpxvi.s3.amazonaws.com/cpxvi_tr/CPXVI_Ubuntu22_Training2_Answer_Key.pdf")

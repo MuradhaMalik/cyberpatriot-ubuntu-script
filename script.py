@@ -34,7 +34,7 @@ if os.geteuid() != 0:
     exit()
 
 input("Did you update allowed_admins.txt, allowed_packages.txt, and allowed_users.txt?")
-time.sleep(1);
+#time.sleep(1);
 print("---------")
 input("Are the forensics questions solved?")
 print("---------")
@@ -42,7 +42,7 @@ input("Are Firefox settings correctly set?")
 print("---------")
 input("Check /etc/sudoers")
 print("---------")
-time.sleep(1);
+#time.sleep(1);
 
 # Get /etc/passwd info
 passwd = get_file("/etc/passwd")
@@ -83,6 +83,20 @@ sudoers = set(get_output("getent group sudo | cut -d: -f4", outfile="out/sudoers
 print_difference(sudoers, "current sudoers", allowed_admins, "allowed admins")
 print("---------")
 
+#require sudo authentication
+check_authenticate_present = subprocess.call(['grep', '-q', '^Defaults authenticate', '/etc/sudoers'])
+
+    if check_authenticate_present == 0:
+        print("Defaults authenticate is already present in sudoers file. Doing nothing.")
+    else:
+        check_not_authenticate_present = subprocess.call(['grep', '-q', '^Defaults !authenticate', '/etc/sudoers'])
+
+        if check_not_authenticate_present == 0:
+            subprocess.call(['sudo', 'sed', '-i', 's/^Defaults !authenticate/Defaults authenticate/', '/etc/sudoers'])
+            print("Modified sudoers file to use Defaults authenticate.")
+        else:
+            subprocess.call('echo "Defaults authenticate" | sudo tee -a /etc/sudoers')
+            print("Added Defaults authenticate to sudoers file.")
 # Difference between default installed packages and newly installed packages
 # packages = set(get_output("apt-mark showmanual", outfile="out/packages.txt"))
 # print_difference(packages, "current packages", default_packages, "default packages")
@@ -118,6 +132,7 @@ if input("Reset /etc/rc.local? (y/n) ") == "y":
 print("---------")
 
 # Reset sources.list
+sed -i 's/^# deb/deb/' /etc/apt/sources.list
 # https://askubuntu.com/questions/586595/restore-default-apt-repositories-in-sources-list-from-command-line/586606
 if input("Reset sources.list? (y/n) ") == "y":
     subprocess.call(["sudo", "cp", "-n", "/etc/apt/sources.list", "backup/sources.list"])

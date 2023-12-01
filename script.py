@@ -379,11 +379,11 @@ excluded_users = [
     "proxy", "www-data", "backup", "list", "irc", "gnats", "nobody", "libuuid",
     "syslog", "messagebus", "usbmux", "dnsmasq", "avahi-autoipd", "kernoops",
     "rtkit", "saned", "whoopsie", "speech-dispatcher", "avahi", "lightdm", "colord",
-    "hplip", "pulse", "muradmalik"
+    "hplip", "pulse", "muradmalik", "_apt"
 ]
 
 # After obtaining current_users, allowed_users, and allowed_admins
-authorized_users = allowed_users | allowed_admins
+authorized_users = allowed_users | allowed_admins | excluded_users
 unauthorized_users = set(user_info["user"] for user_info in current_users) - authorized_users
 
 #Remove Unauthorized Users
